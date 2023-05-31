@@ -3,7 +3,7 @@ require_once "../vendor/autoload.php";
 if(isset($_REQUEST["submit"]))
 {
     $login = new \App\classes\Login;
-    $login->loginCheck($_REQUEST);
+    $login_err = $login->loginCheck($_REQUEST);
 }
 
 ?>
@@ -46,7 +46,13 @@ if(isset($_REQUEST["submit"]))
             
             <button class="btn btn-lg btn-login btn-block" name="submit" type="submit">Sign in</button>
             
-
+            <p> 
+              <?php 
+                if(isset($login_err)){
+                  echo $login_err;
+                }
+              ?>
+            </p>
         </div>
 
       </form>
