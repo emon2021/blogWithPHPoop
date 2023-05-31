@@ -14,8 +14,9 @@
         $query = mysqli_query(Database::connect(),$sql);
         if(mysqli_num_rows($query)==0){
             $categories->addCat($_REQUEST);
+            $inserted = "<font color='greed' style='font-size:16px'>Category Saved!</font>";
         }else{
-            $catExist = "This category is alreay Exist!";
+            $catExist = "<font color='red' style='font-size:16px'>This category is alreay Exist!</font>";
         }
     }
 ?>
@@ -57,7 +58,12 @@
                                       </div>
                                   </div>
                               </form>
-                              <center><font color="red" style="font-size:16px"><?php if(isset($catExist)){echo $catExist;}?></font></center>
+                              <center>
+                              <?php 
+                                if(isset($catExist)){echo $catExist;}
+                                if(isset($inserted)){echo $inserted;}
+                              ?>
+                              </center>
                           </div>
                       </section>
 
