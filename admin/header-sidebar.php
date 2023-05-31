@@ -4,6 +4,11 @@ session_start();
     if(!isset($_SESSION['username'])){
         header("location: login.php?at_first_login");
     }
+
+    //current page using explode
+    $page = $_SERVER["PHP_SELF"]; //fetching page url
+    $page = explode('/',$page);// array separated by forward slash
+    $page_name = end($page); //get page name from url
 ?>
 
 
@@ -290,20 +295,20 @@ session_start();
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
                   <li>
-                      <a class="active" href="#">
+                      <a <?php if($page_name == 'index.php'){echo 'class="active"';} ?> href="index.php">
                           <i class="fa fa-dashboard"></i>
                           <span>Dashboard</span>
                       </a>
                   </li>
 
                   <li class="sub-menu">
-                      <a href="javascript:;" >
+                      <a href="javascript:;" <?php if($page_name == 'addCategories.php' ||$page_name =='manageCategories.php' ){echo 'class="active"';} ?> >
                           <i class="fa fa-laptop"></i>
                           <span>Categories</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="addCategories.php">Add Category</a></li>
-                          <li><a  href="manageCategories.php">Manage Categories</a></li>
+                          <li><a <?php if($page_name == 'addCategories.php'){echo 'class="active"';} ?> href="addCategories.php">Add Category</a></li>
+                          <li><a <?php if($page_name == 'manageCategories.php'){echo 'class="active"';} ?> href="manageCategories.php">Manage Categories</a></li>
                       </ul>
                   </li>
               </ul>
