@@ -20,4 +20,23 @@ class Categories
         $query = mysqli_query(Database::connect(),$sql);
         return $query;
     }
+    //updating categories
+    public function updating($id)
+    {
+        $sql = "SELECT * FROM categories WHERE id='$id'";
+        $query = mysqli_query(Database::connect(),$sql);
+        return $query;
+    }
+    public function updated($catName,$id)
+    {
+        $sql = "UPDATE categories SET catName='$catName' WHERE id='$id'";
+        $query = mysqli_query(Database::connect(),$sql);
+    }
+    //status update
+    public function statusUpdate($status,$id)
+    {
+        $sql = "UPDATE categories SET `catStatus`='$status' WHERE id='$id'";
+        $query = mysqli_query(Database::connect(),$sql);
+        return $query;
+    }
 }

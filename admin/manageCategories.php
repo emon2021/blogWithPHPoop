@@ -38,9 +38,23 @@ require_once '../vendor/autoload.php';
                               <tr>
                                   <td><a href="#"><?php echo $i;$i++; ?></a></td>
                                   <td class="hidden-phone"><?php echo $data["catName"];?></td>
-                                  <td><?php echo $data["catStatus"];?></td>
                                   <td>
-                                      <a href="#<?php echo $data['id'] ?>"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button></a>
+                                    <?php 
+                                        $status = $data["catStatus"];
+                                        $id = $data['id'];
+                                        if($status == 1){
+                                        ?>
+                                         <button class="btn btn-success"><a href="status_updated.php?status=<?php echo $status;?>& id=<?php echo $id;?>" style="color:white;">Active</a></button>
+                                        <?php
+                                        }else if($status == 2){?>
+                                            <button class="btn btn-danger"><a href="status_updated.php?status=<?php echo $status;?>& id=<?php echo $id;?>" style="color:white;">Deactive</a> </button>
+                                        <?php }
+                                    ?>
+                                </td>
+                                  <td>
+                                    <a href="update.php?id=<?php echo $data['id'] ?>">
+                                      <button class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></button>
+                                    </a>
                                       <a href="delete.php?id=<?php echo $data['id'];?>"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o "></i></button></a>
                                   </td>
                               </tr>

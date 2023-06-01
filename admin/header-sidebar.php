@@ -1,17 +1,13 @@
 <?php 
 session_start();
-
     if(!isset($_SESSION['username'])){
-        header("location: login.php?at_first_login");
+        echo "<script type='text/javascript'>window.locatioin.href='login.php'</script>";
     }
-
     //current page using explode
     $page = $_SERVER["PHP_SELF"]; //fetching page url
     $page = explode('/',$page);// array separated by forward slash
     $page_name = end($page); //get page name from url
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
