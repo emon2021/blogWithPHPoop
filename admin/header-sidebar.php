@@ -1,7 +1,7 @@
 <?php 
 session_start();
     if(!isset($_SESSION['username'])){
-        echo "<script type='text/javascript'>window.locatioin.href='login.php'</script>";
+        header("location: login.php");
     }
     //current page using explode
     $page = $_SERVER["PHP_SELF"]; //fetching page url
